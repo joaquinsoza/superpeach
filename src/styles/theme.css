@@ -1,0 +1,92 @@
+/* SuperPeach Theme */
+:root {
+  --color-bg: #FFFFFF;
+  --color-peach: #FFB86B;
+  --color-orange: #FF7F50;
+  --color-pink: #FF5C8A;
+  --color-purple: #8B5CF6;
+  --color-blue: #38BDF8;
+  --color-blue-light: #60A5FA;
+  --color-glow: #FFFACD;
+  --color-glow2: #FDF6E3;
+  --color-gold: #F7C873;
+  --color-white: #fff;
+  --color-black: #000;
+  --radius: 1.25rem;
+  --shadow-glow: 0 0 24px 4px var(--color-peach), 0 0 48px 8px var(--color-purple);
+  --font-main: 'Inter', 'Space Grotesk', system-ui, sans-serif;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-white);
+  font-family: var(--font-main);
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.glow {
+  box-shadow: var(--shadow-glow);
+}
+
+.card {
+  background: rgba(24, 24, 40, 0.95);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 16px 0 rgba(255, 184, 107, 0.08);
+  padding: 2rem;
+  margin: 1rem 0;
+}
+
+.button-glow {
+  background: linear-gradient(90deg, var(--color-peach), var(--color-pink), var(--color-blue));
+  color: var(--color-white);
+  border: none;
+  border-radius: var(--radius);
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 16px 2px var(--color-peach), 0 0 32px 4px var(--color-blue-light);
+  transition: transform 0.1s, box-shadow 0.2s;
+}
+.button-glow:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 0 32px 8px var(--color-pink), 0 0 48px 12px var(--color-blue);
+}
+
+.button-minimal {
+  background: var(--color-bg);
+  color: var(--color-peach);
+  border: 1.5px solid var(--color-peach);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.button-minimal:hover, .button-minimal:focus {
+  background: var(--color-peach);
+  color: var(--color-bg);
+  border-color: var(--color-peach);
+}
+
+input, select {
+  background: rgba(24, 24, 40, 0.8);
+  color: var(--color-white);
+  border: 1px solid var(--color-blue-light);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  background: var(--color-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-peach);
+  border-radius: 8px;
+} 
