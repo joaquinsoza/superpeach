@@ -1,4 +1,5 @@
 <script lang="ts">
+  import WalletHeader from './WalletHeader.svelte';
   import AssetList from './AssetList.svelte';
   import SendModal from './SendModal.svelte';
   import SwapModal from './SwapModal.svelte';
@@ -22,16 +23,8 @@
 </script>
 
 <div class="min-h-screen bg-[var(--color-bg)] flex flex-col">
-  <header class="flex items-center justify-between px-6 py-4">
-    <div class="flex items-center gap-3">
-      <img src="/favicon_2.webp" alt="SuperPeach Logo" style="width: 40px; height: 40px; border-radius: 50%;" />
-      <span class="text-2xl font-bold text-[var(--color-peach)]">SuperPeach Wallet</span>
-    </div>
-    <button class="button-glow px-4 py-2 text-sm" on:click={onLogout}>Logout</button>
-  </header>
-
+  <WalletHeader {onLogout} />
   <TabBar {activeTab} on:change={e => activeTab = e.detail} />
-
   <main class="flex-1 flex flex-col items-center px-2 py-6">
     {#if activeTab === 'balances'}
       <div class="card w-full max-w-lg">
@@ -47,7 +40,7 @@
     {#if activeTab === 'signers'}
       <SignersTab {signers} on:add={onAddSigner} on:remove={onRemoveSigner} />
     {/if}
-    {#if activeTab === 'demo'}
+    {#if activeTab === 'apps'}
       <DemoAppsTab {demoApps} />
     {/if}
   </main>
