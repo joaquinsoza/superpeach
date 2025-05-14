@@ -6,7 +6,7 @@
 <div class="flex flex-col md:flex-row min-h-screen bg-[var(--color-bg)]">
   <div class="flex flex-col justify-center items-center flex-1 px-8 py-12">
     <h1 class="text-4xl font-bold mb-2" style="color: var(--color-peach);">SuperPeach Wallet</h1>
-    <p class="text-lg mb-8 text-[var(--color-blue-light)]">A beautiful, secure Stellar wallet powered by passkeys</p>
+    <p class="text-lg mb-8 text-[var(--color-blue-light)]">A secure Stellar wallet powered by passkeys</p>
     <div class="flex flex-col gap-4 w-full max-w-xs">
       <button class="button-minimal w-full" on:click={onCreate}>
         + Create New Wallet
