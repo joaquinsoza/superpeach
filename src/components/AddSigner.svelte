@@ -128,131 +128,118 @@
     }
 </script>
 
-<main class="p-2">
-    <table class="table-fixed mb-2">
-        <thead>
-            <tr>
-                <th>
-                    <img src="/favicon_2.webp" width="28" />
-                </th>
-                <th class="px-2">Super Peach</th>
-                {#if $contractId}
-                    <td class="px-2">Add Signer</td>
-                    <td>
-                        <button
-                            class="bg-black text-white px-2 py-1 uppercase text-sm"
-                            on:click={logout}>Reset</button
-                        >
-                    </td>
-                {/if}
-            </tr>
-        </thead>
-    </table>
+<header class="flex items-center justify-between px-8 py-4 bg-transparent w-full border-b border-[var(--color-peach)]">
+  <div class="flex items-center gap-4 min-w-0">
+    <img src="/favicon_2.webp" alt="SuperPeach Logo" style="width: 36px; height: 36px; border-radius: 50%;" />
+    <span class="text-2xl font-bold whitespace-nowrap" style="color: var(--color-peach);">SuperPeach Wallet</span>
+  </div>
+  <button class="button-minimal ml-4" on:click={logout}>Logout</button>
+</header>
 
-    {#if $contractId}
-        <table class="table-fixed">
+<main class="flex flex-col items-center justify-center min-h-screen p-4">
+    <div class="card w-full max-w-md">
+        <h2 class="text-2xl font-bold mb-6 text-[var(--color-peach)]">Add Signer</h2>
+        <table class="table-fixed w-full mb-4">
             <tbody>
-                <tr class="[&>td]:px-2">
-                    <td class="bg-black/10">Contract:</td>
-                    <td
-                        >{$contractId.substring(0, 6)}...{$contractId.substring(
-                            $contractId.length - 6,
-                        )}</td
-                    >
-                </tr>
+                {#if $contractId}
+                    <tr class="[&>td]:px-2">
+                        <td class="bg-black/10">Contract:</td>
+                        <td
+                            >{$contractId.substring(0, 6)}...{$contractId.substring(
+                                $contractId.length - 6,
+                            )}</td
+                        >
+                    </tr>
 
-                {#if publicKey}
-                    {#if signerKey && signerKeyId.length}
-                        <tr class="[&>td]:px-2">
-                            <td class="bg-black/10">Key:</td>
-                            <td
-                                >{signerKey.substring(
-                                    0,
-                                    6,
-                                )}...{signerKey.substring(
-                                    signerKey.length - 6,
-                                )}</td
-                            >
-                        </tr>
-                    {:else}
-                        <tr class="[&>td]:px-2">
-                            <td class="bg-black/10">Key:</td>
-                            <td
-                                >{publicKey.substring(
-                                    0,
-                                    6,
-                                )}...{publicKey.substring(
-                                    publicKey.length - 6,
-                                )}</td
-                            >
+                    {#if publicKey}
+                        {#if signerKey && signerKeyId.length}
+                            <tr class="[&>td]:px-2">
+                                <td class="bg-black/10">Key:</td>
+                                <td
+                                    >{signerKey.substring(
+                                        0,
+                                        6,
+                                    )}...{signerKey.substring(
+                                        signerKey.length - 6,
+                                    )}</td
+                                >
+                            </tr>
+                        {:else}
+                            <tr class="[&>td]:px-2">
+                                <td class="bg-black/10">Key:</td>
+                                <td
+                                    >{publicKey.substring(
+                                        0,
+                                        6,
+                                    )}...{publicKey.substring(
+                                        publicKey.length - 6,
+                                    )}</td
+                                >
+                            </tr>
+                        {/if}
+
+                        {#if signerLimits}
+                            <tr class="[&>td]:px-2">
+                                <td class="bg-black/10">Limits:</td>
+                                <td
+                                    >{signerLimits.substring(
+                                        0,
+                                        6,
+                                    )}...{signerLimits.substring(
+                                        signerLimits.length - 6,
+                                    )}</td
+                                >
+                            </tr>
+                        {/if}
+
+                        <tr>
+                            <td colspan="2">
+                                {#if added}
+                                    <span
+                                        class="flex items-center justify-center bg-green-500 text-white px-2 py-1 uppercase text-sm w-full"
+                                    >
+                                        Signer added ✔︎
+                                    </span>
+                                {:else}
+                                    <button
+                                        class="button-minimal flex items-center justify-center px-2 py-1 uppercase text-sm w-full"
+                                        style="background: var(--color-peach); color: var(--color-bg);"
+                                        on:click={addSigner}
+                                        >+ Add signer {#if loaders.get("add")}<Loader
+                                                class="ml-2"
+                                            />{/if}</button
+                                    >
+                                {/if}
+                            </td>
                         </tr>
                     {/if}
-
-                    {#if signerLimits}
-                        <!-- TODO signerLimits need to be a lot more robust and an array, this is a monkey patch -->
-                        <tr class="[&>td]:px-2">
-                            <td class="bg-black/10">Limits:</td>
-                            <td
-                                >{signerLimits.substring(
-                                    0,
-                                    6,
-                                )}...{signerLimits.substring(
-                                    signerLimits.length - 6,
-                                )}</td
-                            >
-                        </tr>
-                    {/if}
-
+                {:else}
                     <tr>
-                        <td colspan="2">
-                            {#if added}
-                                <span
-                                    class="flex items-center justify-center bg-green-500 text-white px-2 py-1 uppercase text-sm w-full"
-                                >
-                                    Signer added ✔︎
-                                </span>
-                            {:else}
-                                <button
-                                    class="flex items-center justify-center bg-black text-white px-2 py-1 uppercase text-sm w-full"
-                                    on:click={addSigner}
-                                    >+ Add signer {#if loaders.get("add")}<Loader
-                                            class="ml-2"
-                                        />{/if}</button
-                                >
-                            {/if}
+                        <td>
+                            <button
+                                class="flex items-center justify-center bg-black text-white px-2 py-1 uppercase text-sm w-full"
+                                on:click={onCreate}
+                                >+ Create new wallet {#if loaders.get("create")}<Loader
+                                        class="ml-2"
+                                    />{/if}</button
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button
+                                class="flex items-center justify-center text-black px-2 py-1 uppercase text-sm w-full"
+                                on:click={onConnect}
+                                >+ Connect existing wallet {#if loaders.get("connect")}<Loader
+                                        class="ml-2"
+                                    />{/if}</button
+                            >
                         </td>
                     </tr>
                 {/if}
             </tbody>
         </table>
-    {:else}
-        <table>
-            <tbody>
-                <tr>
-                    <td>
-                        <button
-                            class="flex items-center justify-center bg-black text-white px-2 py-1 uppercase text-sm w-full"
-                            on:click={onCreate}
-                            >+ Create new wallet {#if loaders.get("create")}<Loader
-                                    class="ml-2"
-                                />{/if}</button
-                        >
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button
-                            class="flex items-center justify-center text-black px-2 py-1 uppercase text-sm w-full"
-                            on:click={onConnect}
-                            >+ Connect existing wallet {#if loaders.get("connect")}<Loader
-                                    class="ml-2"
-                                />{/if}</button
-                        >
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    {/if}
+    </div>
 </main>
 
 <style>
