@@ -37,7 +37,6 @@ export interface IModalTheme {
     HOT_WALLET = 'HOT_WALLET',
     BRIDGE_WALLET = 'BRIDGE_WALLET',
     AIR_GAPED_WALLET = 'AIR_GAPED_WALLET',
-    SUPERPEACH = 'superpeach',
   }
   
   export interface ISupportedWallet {

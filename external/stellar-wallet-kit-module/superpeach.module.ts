@@ -11,7 +11,7 @@ export class SuperPeachModule implements ModuleInterface {
   productIcon: string;
 
   constructor() {
-    this.moduleType = ModuleType.SUPERPEACH;
+    this.moduleType = ModuleType.HOT_WALLET;
     this.productId = SUPERPEACH_ID;
     this.productName = 'SuperPeach';
     this.productUrl = 'https://superpeach.xyz';
