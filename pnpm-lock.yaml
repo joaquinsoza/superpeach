@@ -29,6 +29,9 @@ importers:
       qrcode:
         specifier: ^1.5.4
         version: 1.5.4
+      svelte-hero-icons:
+        specifier: ^5.2.0
+        version: 5.2.0(svelte@4.2.19)
     devDependencies:
       '@astrojs/check':
         specifier: ^0.9.4
@@ -873,6 +876,9 @@ packages:
 
   '@simplewebauthn/types@12.0.0':
     resolution: {integrity: sha512-q6y8MkoV8V8jB4zzp18Uyj2I7oFp2/ONL8c3j8uT06AOWu3cIChc1au71QYHrP2b+xDapkGTiv+9lX7xkTlAsA==}
+
+  '@steeze-ui/heroicons@2.4.2':
+    resolution: {integrity: sha512-66luL+uaxyC6mcZigewH4phfDxNWj4sH+n6qK2VnY3zcgpMmNAgVQbMGfZYfKhLqrUo13BlqpmhWuHqAUpehlA==}
 
   '@stellar/js-xdr@3.1.2':
     resolution: {integrity: sha512-VVolPL5goVEIsvuGqDc5uiKxV03lzfWdvYg1KikvwheDmTBO68CKDji3bAZ/kppZrx5iTA8z3Ld5yuytcvhvOQ==}
@@ -2764,6 +2770,12 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  svelte-hero-icons@5.2.0:
+    resolution: {integrity: sha512-KpdMTL0bOnkxciEmDXvyVF/R5nrZ1x1uHCSt9gMrrbEd3g5HSIaaDChOutTOfeI+cZ3EJbb+OcBH/lBzJr1aEw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      svelte: ^3.0.0 || ^4.0.0 || ^5.0.0
+
   svelte-hmr@0.16.0:
     resolution: {integrity: sha512-Gyc7cOS3VJzLlfj7wKS0ZnzDVdv3Pn2IuVeJPk9m2skfhcu5bq3wtIZyQGggr7/Iim5rH5cncyQft/kRLupcnA==}
     engines: {node: ^12.20 || ^14.13.1 || >= 16}
@@ -3936,6 +3948,8 @@ snapshots:
   '@simplewebauthn/browser@13.1.0': {}
 
   '@simplewebauthn/types@12.0.0': {}
+
+  '@steeze-ui/heroicons@2.4.2': {}
 
   '@stellar/js-xdr@3.1.2': {}
 
@@ -6388,6 +6402,11 @@ snapshots:
       ts-interface-checker: 0.1.13
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  svelte-hero-icons@5.2.0(svelte@4.2.19):
+    dependencies:
+      '@steeze-ui/heroicons': 2.4.2
+      svelte: 4.2.19
 
   svelte-hmr@0.16.0(svelte@4.2.19):
     dependencies:

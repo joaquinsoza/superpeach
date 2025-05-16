@@ -1,5 +1,6 @@
 <script lang="ts">
   import WalletHeader from './WalletHeader.svelte';
+  import WalletFooter from './WalletFooter.svelte';
   import AssetList from './AssetList.svelte';
   import SwapModal from './SwapModal.svelte';
   import SignersTab from './SignersTab.svelte';
@@ -24,12 +25,11 @@
   function handleTabChange(tab: string) {
     activeTab = tab;
   }
-  
 </script>
 
 <div class="min-h-screen bg-[var(--color-bg)] flex flex-col">
-  <WalletHeader {activeTab} onTabChange={handleTabChange} {onLogout} />
-  <main class="flex-1 flex flex-col items-center px-2 py-6">
+  <WalletHeader {onLogout} />
+  <main class="flex-1 flex flex-col items-center px-2 py-6 pb-20">
     {#if activeTab === 'balances'}
       <div class="card w-full max-w-lg">
         <AssetList {balances} on:send={() => [activeTab = 'send']} on:swap={() => showSwap = true} />
@@ -51,4 +51,5 @@
       <DemoAppsTab {demoApps} />
     {/if}
   </main>
+  <WalletFooter {activeTab} onTabChange={handleTabChange} />
 </div> 
