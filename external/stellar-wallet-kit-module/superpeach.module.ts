@@ -70,7 +70,7 @@ export class SuperPeachModule implements ModuleInterface {
       throw new Error('Key ID is required');
     }
 
-    const signedAuthEntry = await this.account.signAuthEntry(authEntry, { keyId: keyId });
+    const signedAuthEntry = await this.account.signAuthEntry(authEntry as any, { keyId: keyId });
 
     return { signedAuthEntry };
   }
