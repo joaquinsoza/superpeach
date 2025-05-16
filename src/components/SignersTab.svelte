@@ -26,12 +26,12 @@
             <span class="text-xs text-[var(--color-pink)]">Expired</span>
           {/if}
         </div>
-        <button class="button-glow px-3 py-1 text-xs" on:click={() => dispatch('remove', signer.key)}>Remove</button>
+        <button class="button-minimal px-3 py-1 text-xs" on:click={() => dispatch('remove', signer.key)}>Remove</button>
       </li>
     {/each}
   </ul>
   <div class="flex gap-2 items-center">
     <input class="flex-1" type="text" placeholder="Add signer key..." bind:value={newSigner} />
-    <button class="button-glow px-4 py-2 text-sm" on:click={handleAdd}>Add</button>
+    <button class="button-minimal px-4 py-2 text-sm" on:click={handleAdd}>Add</button>
   </div>
 </div> 

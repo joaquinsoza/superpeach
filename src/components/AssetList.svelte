@@ -20,7 +20,7 @@
     {/each}
   </ul>
   <div class="flex gap-4">
-    <button class="button-glow flex-1" on:click={() => dispatch('send')}>Send</button>
-    <button class="button-glow flex-1" style="background: linear-gradient(90deg, var(--color-blue), var(--color-purple));" on:click={() => dispatch('swap')}>Swap</button>
+    <button class="button-minimal flex-1" on:click={() => dispatch('send')}>Send</button>
+    <button class="button-minimal flex-1" on:click={() => dispatch('swap')}>Swap</button>
   </div>
 </div> 
