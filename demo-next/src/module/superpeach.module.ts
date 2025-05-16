@@ -1,9 +1,8 @@
 import { PasskeyKit } from 'passkey-kit';
-import { ModuleType, type ModuleInterface, WalletNetwork } from './types';
-import { getContractId, send } from './templib/passkey';
+import { ModuleType, type ModuleInterface } from '@creit.tech/stellar-wallets-kit';
+import { getContractId } from './templib/passkey';
 import base64url from 'base64url';
-import { getContractSac } from './templib';
-import { Address, nativeToScVal, Networks, scValToNative, xdr } from '@stellar/stellar-sdk';
+import { Networks, xdr } from '@stellar/stellar-sdk';
 
 export const SUPERPEACH_ID = 'superpeach';
 
@@ -42,7 +41,7 @@ export class SuperPeachModule implements ModuleInterface {
   }
 
   async signTransaction(
-    xdr: any,
+    xdr: string,
   ) {
     const keyId = localStorage.getItem('sp:keyId');
 
@@ -70,9 +69,9 @@ export class SuperPeachModule implements ModuleInterface {
       throw new Error('Key ID is required');
     }
 
-    const signedAuthEntry = await this.account.signAuthEntry(authEntry as any, { keyId: keyId });
+    const signedAuthEntry = await this.account.signAuthEntry(authEntry as unknown as xdr.SorobanAuthorizationEntry, { keyId: keyId });
 
-    return { signedAuthEntry };
+    return { signedAuthEntry: signedAuthEntry as unknown as string };
   }
 
   async signMessage(): Promise<{ signedMessage: string; signerAddress?: string }> {
@@ -136,8 +135,8 @@ export class SuperPeachModule implements ModuleInterface {
         });
         localStorage.setItem('superpeach_address', connectedWallet.contractId);
       }
-    } catch (err: any) {
-      return alert(err.message);
+    } catch (err) {
+      return alert((err as Error).message);
     }
   }
 }

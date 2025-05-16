@@ -5,13 +5,12 @@ import {
   StellarWalletsKit,
   WalletNetwork,
   ISupportedWallet,
-  SuperPeachModule,
-  SUPERPEACH_ID,
   allowAllModules,
-} from "../../../Stellar-Wallets-Kit/build";
+} from "@creit.tech/stellar-wallets-kit";
 import { Address, Keypair, nativeToScVal, Networks, scValToNative, xdr } from "@stellar/stellar-sdk";
 import { AssembledTransaction } from "@stellar/stellar-sdk/minimal/contract";
 import { PasskeyKit } from "passkey-kit";
+import { SUPERPEACH_ID, SuperPeachModule } from "../module/superpeach.module";
 
 export default function Home() {
   const [kit] = useState(
